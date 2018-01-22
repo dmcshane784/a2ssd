@@ -1,2 +1,3 @@
 # a2ssd
-Collaborative A2 SSD project from QUB tutorials
+
+Collaborative A2 SSD project from QUB tutorials.
