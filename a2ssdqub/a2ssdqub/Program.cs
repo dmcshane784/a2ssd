@@ -18,7 +18,7 @@ namespace a2ssdqub
             var dataDir = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Environment.CurrentDirectory));
             AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
 
-            Application.Run(new Home());
+            Application.Run(mainForm: new Home());
         }
     }
 }
