@@ -13,6 +13,11 @@ namespace a2ssdqub
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // Override data directory to use root database.mdf.
+            var dataDir = System.IO.Path.GetDirectoryName(System.IO.Path.GetDirectoryName(Environment.CurrentDirectory));
+            AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
+
             Application.Run(new Home());
         }
     }
