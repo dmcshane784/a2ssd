@@ -16,5 +16,15 @@ namespace a2ssdqub
         {
             InitializeComponent();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            this.contactsTableAdapter.Fill(this.databaseDataSet.Contacts);
+        }
     }
 }
