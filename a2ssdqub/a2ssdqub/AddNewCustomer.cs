@@ -38,6 +38,7 @@ namespace a2ssdqub
                 {
                     // ! // IDEALLY HERE WE WOULD REVEAL THE NEW CUSTOMER ID
                     MessageBox.Show(txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID);
+                    tssText.Text = txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID;
                 }
                 else
                 {
