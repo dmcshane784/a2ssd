@@ -16,6 +16,8 @@ namespace a2ssdqub
         public AddNewCustomer()
         {
             InitializeComponent();
+            lblIdMsg.Text = "A new Customer ID will be created automatically";
+            tssText.Text = "";
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
@@ -38,6 +40,7 @@ namespace a2ssdqub
                 {
                     // ! // IDEALLY HERE WE WOULD REVEAL THE NEW CUSTOMER ID
                     MessageBox.Show(txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID);
+                    lblIdMsg.Text = "Customer ID " + newlyMadeID;
                     tssText.Text = txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID;
                 }
                 else
@@ -55,6 +58,25 @@ namespace a2ssdqub
         {
             Hide();
             Program.mainM.Show();
+        }
+
+        private void ClearForm()
+        {
+            lblIdMsg.Text = "A new Customer ID will be created automatically";
+            txtForename.Text = "";
+            datDob.Text = "";
+
+            radMale.Checked = false;
+            radFemale.Checked = false;
+            radUndisclosed.Checked = false;
+            radUnknown.Checked = false;
+
+            tssText.Text = "";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ClearForm();
         }
     }
 }

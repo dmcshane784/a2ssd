@@ -30,5 +30,10 @@ namespace a2ssdqub
             DeleteCustomer delC = new DeleteCustomer();
             delC.Show();
         }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

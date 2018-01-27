@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.lbl = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblIdMsg = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtForename = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,6 +43,7 @@
             this.btnAddCustomer = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tssText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,14 +57,14 @@
             this.lbl.TabIndex = 0;
             this.lbl.Text = "Add A New Customer";
             // 
-            // label1
+            // lblIdMsg
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 54);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "A new Customer ID will be created automatically";
+            this.lblIdMsg.AutoSize = true;
+            this.lblIdMsg.Location = new System.Drawing.Point(12, 68);
+            this.lblIdMsg.Name = "lblIdMsg";
+            this.lblIdMsg.Size = new System.Drawing.Size(233, 13);
+            this.lblIdMsg.TabIndex = 1;
+            this.lblIdMsg.Text = "A new Customer ID will be created automatically";
             // 
             // label2
             // 
@@ -186,11 +187,22 @@
             this.tssText.Size = new System.Drawing.Size(118, 17);
             this.tssText.Text = "toolStripStatusLabel1";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(477, 300);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(198, 23);
+            this.button1.TabIndex = 14;
+            this.button1.Text = "ADD ANOTHER CUSTOMER";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // AddNewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 369);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.btnCancel);
@@ -203,7 +215,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtForename);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblIdMsg);
             this.Controls.Add(this.lbl);
             this.Name = "AddNewCustomer";
             this.Text = "Add A New Customer";
@@ -217,7 +229,7 @@
         #endregion
 
         private System.Windows.Forms.Label lbl;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblIdMsg;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtForename;
         private System.Windows.Forms.Label label3;
@@ -231,5 +243,6 @@
         private System.Windows.Forms.Button btnAddCustomer;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tssText;
+        private System.Windows.Forms.Button button1;
     }
 }
