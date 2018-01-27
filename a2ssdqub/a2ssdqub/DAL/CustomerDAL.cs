@@ -14,14 +14,20 @@ namespace a2ssdqub.DAL
 
         public static int AddNewCustomer(string fname, string dob, string sex)
         {
+            int lastID = -1; // -1 suggests failed INSERT, looks like T for Trouble
+
             using(SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                string sqlQuery = string.Format("INSERT INTO CUSTOMERS VALUES('{0}','{1}','{2}')",fname,dob,sex);
+                string sqlQuery = string.Format("INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}');", fname, dob, sex);
                 SqlCommand insertCommand = new SqlCommand(sqlQuery, connection);
-                int rowsAffected = insertCommand.ExecuteNonQuery();
+
+                // int newlyMadeID = insertCommand.ExecuteNonQuery();
+
+                lastID = (int) insertCommand.ExecuteScalar(); // returns a SCALAR (a value object), would need an int? type
+
                 connection.Close();
-                return rowsAffected;
+                return lastID;
             }
         }
 
@@ -53,8 +59,9 @@ namespace a2ssdqub.DAL
                 // iterate through the result set; each iteration is 1 record
                 while(reader.Read())
                 {
-                    // LEFT = Key, RIGHT = Value to be visible on combo box, formed into a string by implicit cast
-                    customerDetails.Add(int.Parse(reader[0].ToString()),reader[0] + "," + reader[1]);
+                    // LEFT = Key being extracted directly via IDataReader's .GetInt32() method
+                    // RIGHT = Value to be visible on combo box, formed into a string by implicit cast
+                    customerDetails.Add(reader.GetInt32(0),reader[0] + "," + reader[1]);
                 }
 
                 connection.Close();

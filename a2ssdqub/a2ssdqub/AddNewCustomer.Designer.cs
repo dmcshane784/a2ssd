@@ -41,6 +41,9 @@
             this.radUnknown = new System.Windows.Forms.RadioButton();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnAddCustomer = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tssText = new System.Windows.Forms.ToolStripStatusLabel();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lbl
@@ -167,11 +170,28 @@
             this.btnAddCustomer.UseVisualStyleBackColor = true;
             this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tssText});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 347);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(687, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tssText
+            // 
+            this.tssText.Name = "tssText";
+            this.tssText.Size = new System.Drawing.Size(118, 17);
+            this.tssText.Text = "toolStripStatusLabel1";
+            // 
             // AddNewCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 335);
+            this.ClientSize = new System.Drawing.Size(687, 369);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnAddCustomer);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.radUnknown);
@@ -187,6 +207,8 @@
             this.Controls.Add(this.lbl);
             this.Name = "AddNewCustomer";
             this.Text = "Add A New Customer";
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,5 +229,7 @@
         private System.Windows.Forms.RadioButton radUnknown;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnAddCustomer;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tssText;
     }
 }
