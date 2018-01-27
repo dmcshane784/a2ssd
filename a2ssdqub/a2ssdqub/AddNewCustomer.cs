@@ -13,10 +13,12 @@ namespace a2ssdqub
 {
     public partial class AddNewCustomer : Form
     {
+        private const string ID_ALERT = "A new Customer ID will be created automatically";
+
         public AddNewCustomer()
         {
             InitializeComponent();
-            lblIdMsg.Text = "A new Customer ID will be created automatically";
+            lblIdMsg.Text = ID_ALERT;
             tssText.Text = "";
         }
 
@@ -62,7 +64,7 @@ namespace a2ssdqub
 
         private void ClearForm()
         {
-            lblIdMsg.Text = "A new Customer ID will be created automatically";
+            lblIdMsg.Text = ID_ALERT;
             txtForename.Text = "";
             datDob.Text = "";
 
