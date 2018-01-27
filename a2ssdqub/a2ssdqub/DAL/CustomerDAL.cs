@@ -52,7 +52,7 @@ namespace a2ssdqub.DAL
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                SqlCommand getAll = new SqlCommand("SELECT CUSTOMERS.CustID,CUSTOMERS.Forename FROM CUSTOMERS", connection);
+                SqlCommand getAll = new SqlCommand("SELECT * FROM CUSTOMERS ORDER BY CUSTOMERS.CustID ASC", connection);
 
                 SqlDataReader reader = getAll.ExecuteReader();
 
@@ -61,7 +61,12 @@ namespace a2ssdqub.DAL
                 {
                     // LEFT = Key being extracted directly via IDataReader's .GetInt32() method
                     // RIGHT = Value to be visible on combo box, formed into a string by implicit cast
-                    customerDetails.Add(reader.GetInt32(0),reader[0] + "," + reader[1]);
+                    // 1st DRAFT:
+                    // customerDetails.Add(reader.GetInt32(0),reader[0] + "," + reader[1]);
+                    // 2nd DRAFT:
+                    // NB Implicit typecasting still in use
+                    string dictionaryEntry = string.Format("{0}, {1}, {2:dd/MM/yyyy}, {3}", reader[0], reader[1], reader.GetDateTime(2), reader[3]);
+                    customerDetails.Add(reader.GetInt32(0),dictionaryEntry);
                 }
 
                 connection.Close();
