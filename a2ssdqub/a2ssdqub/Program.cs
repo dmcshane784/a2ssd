@@ -8,6 +8,8 @@ namespace a2ssdqub
 {
     static class Program
     {
+        public static MainMenu mainM;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -17,7 +19,8 @@ namespace a2ssdqub
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             SetupDataDirectoryPath();
-            Application.Run(new Form1());
+            mainM = new MainMenu();
+            Application.Run(mainM);
         }
 
 /*
