@@ -39,9 +39,9 @@ namespace a2ssdqub.DAL
             }
         }
 
-        public static string[] GetListOfCustomers()
+        public static Dictionary<int,string> GetListOfCustomers()
         {
-            List<string> customerDetails = new List<string>();
+            Dictionary<int, string> customerDetails = new Dictionary<int, string>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -53,12 +53,13 @@ namespace a2ssdqub.DAL
                 // iterate through the result set; each iteration is 1 record
                 while(reader.Read())
                 {
-                    customerDetails.Add(reader[0].ToString() + "," + reader[1].ToString());
+                    // LEFT = Key, RIGHT = Value to be visible on combo box, formed into a string by implicit cast
+                    customerDetails.Add(int.Parse(reader[0].ToString()),reader[0] + "," + reader[1]);
                 }
 
                 connection.Close();
 
-                return customerDetails.ToArray();
+                return customerDetails;
             }
         }
     }
