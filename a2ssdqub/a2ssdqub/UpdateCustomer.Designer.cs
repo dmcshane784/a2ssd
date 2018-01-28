@@ -30,24 +30,24 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.panChoose = new System.Windows.Forms.Panel();
+            this.lisCus = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.panForm = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.lisCus = new System.Windows.Forms.ListBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtCusID = new System.Windows.Forms.TextBox();
-            this.txtForename = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.radMale = new System.Windows.Forms.RadioButton();
-            this.radFemale = new System.Windows.Forms.RadioButton();
-            this.radUndisclosed = new System.Windows.Forms.RadioButton();
-            this.radUnknown = new System.Windows.Forms.RadioButton();
-            this.dtpDob = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.dtpDob = new System.Windows.Forms.DateTimePicker();
+            this.radUnknown = new System.Windows.Forms.RadioButton();
+            this.radUndisclosed = new System.Windows.Forms.RadioButton();
+            this.radFemale = new System.Windows.Forms.RadioButton();
+            this.radMale = new System.Windows.Forms.RadioButton();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtForename = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.lblCusID = new System.Windows.Forms.Label();
             this.panChoose.SuspendLayout();
             this.panForm.SuspendLayout();
             this.SuspendLayout();
@@ -70,6 +70,14 @@
             this.panChoose.Size = new System.Drawing.Size(324, 243);
             this.panChoose.TabIndex = 1;
             // 
+            // lisCus
+            // 
+            this.lisCus.FormattingEnabled = true;
+            this.lisCus.Location = new System.Drawing.Point(4, 4);
+            this.lisCus.Name = "lisCus";
+            this.lisCus.Size = new System.Drawing.Size(317, 225);
+            this.lisCus.TabIndex = 0;
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 344);
@@ -90,6 +98,7 @@
             // 
             // panForm
             // 
+            this.panForm.Controls.Add(this.lblCusID);
             this.panForm.Controls.Add(this.btnUpdate);
             this.panForm.Controls.Add(this.dtpDob);
             this.panForm.Controls.Add(this.radUnknown);
@@ -98,7 +107,6 @@
             this.panForm.Controls.Add(this.radMale);
             this.panForm.Controls.Add(this.label7);
             this.panForm.Controls.Add(this.txtForename);
-            this.panForm.Controls.Add(this.txtCusID);
             this.panForm.Controls.Add(this.label6);
             this.panForm.Controls.Add(this.label5);
             this.panForm.Controls.Add(this.label4);
@@ -107,105 +115,22 @@
             this.panForm.Size = new System.Drawing.Size(441, 243);
             this.panForm.TabIndex = 4;
             // 
-            // label3
+            // btnUpdate
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(377, 82);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(132, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Chosen customer\'s details:";
+            this.btnUpdate.Location = new System.Drawing.Point(229, 188);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(202, 41);
+            this.btnUpdate.TabIndex = 7;
+            this.btnUpdate.Text = "UPDATE NOW";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.button2_Click);
             // 
-            // lisCus
+            // dtpDob
             // 
-            this.lisCus.FormattingEnabled = true;
-            this.lisCus.Location = new System.Drawing.Point(4, 4);
-            this.lisCus.Name = "lisCus";
-            this.lisCus.Size = new System.Drawing.Size(317, 225);
-            this.lisCus.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 29);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(65, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Customer ID";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(54, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Forename";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 111);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 13);
-            this.label6.TabIndex = 2;
-            this.label6.Text = "Date of Birth";
-            // 
-            // txtCusID
-            // 
-            this.txtCusID.Location = new System.Drawing.Point(84, 26);
-            this.txtCusID.Name = "txtCusID";
-            this.txtCusID.Size = new System.Drawing.Size(100, 20);
-            this.txtCusID.TabIndex = 3;
-            // 
-            // txtForename
-            // 
-            this.txtForename.Location = new System.Drawing.Point(84, 69);
-            this.txtForename.Name = "txtForename";
-            this.txtForename.Size = new System.Drawing.Size(200, 20);
-            this.txtForename.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 140);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(42, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Gender";
-            // 
-            // radMale
-            // 
-            this.radMale.AutoSize = true;
-            this.radMale.Location = new System.Drawing.Point(84, 140);
-            this.radMale.Name = "radMale";
-            this.radMale.Size = new System.Drawing.Size(48, 17);
-            this.radMale.TabIndex = 7;
-            this.radMale.TabStop = true;
-            this.radMale.Text = "Male";
-            this.radMale.UseVisualStyleBackColor = true;
-            // 
-            // radFemale
-            // 
-            this.radFemale.AutoSize = true;
-            this.radFemale.Location = new System.Drawing.Point(84, 164);
-            this.radFemale.Name = "radFemale";
-            this.radFemale.Size = new System.Drawing.Size(59, 17);
-            this.radFemale.TabIndex = 8;
-            this.radFemale.TabStop = true;
-            this.radFemale.Text = "Female";
-            this.radFemale.UseVisualStyleBackColor = true;
-            // 
-            // radUndisclosed
-            // 
-            this.radUndisclosed.AutoSize = true;
-            this.radUndisclosed.Location = new System.Drawing.Point(84, 188);
-            this.radUndisclosed.Name = "radUndisclosed";
-            this.radUndisclosed.Size = new System.Drawing.Size(83, 17);
-            this.radUndisclosed.TabIndex = 9;
-            this.radUndisclosed.TabStop = true;
-            this.radUndisclosed.Text = "Undisclosed";
-            this.radUndisclosed.UseVisualStyleBackColor = true;
+            this.dtpDob.Location = new System.Drawing.Point(84, 105);
+            this.dtpDob.Name = "dtpDob";
+            this.dtpDob.Size = new System.Drawing.Size(200, 20);
+            this.dtpDob.TabIndex = 11;
             // 
             // radUnknown
             // 
@@ -218,12 +143,90 @@
             this.radUnknown.Text = "Unknown";
             this.radUnknown.UseVisualStyleBackColor = true;
             // 
-            // dtpDob
+            // radUndisclosed
             // 
-            this.dtpDob.Location = new System.Drawing.Point(84, 105);
-            this.dtpDob.Name = "dtpDob";
-            this.dtpDob.Size = new System.Drawing.Size(200, 20);
-            this.dtpDob.TabIndex = 11;
+            this.radUndisclosed.AutoSize = true;
+            this.radUndisclosed.Location = new System.Drawing.Point(84, 188);
+            this.radUndisclosed.Name = "radUndisclosed";
+            this.radUndisclosed.Size = new System.Drawing.Size(83, 17);
+            this.radUndisclosed.TabIndex = 9;
+            this.radUndisclosed.TabStop = true;
+            this.radUndisclosed.Text = "Undisclosed";
+            this.radUndisclosed.UseVisualStyleBackColor = true;
+            // 
+            // radFemale
+            // 
+            this.radFemale.AutoSize = true;
+            this.radFemale.Location = new System.Drawing.Point(84, 164);
+            this.radFemale.Name = "radFemale";
+            this.radFemale.Size = new System.Drawing.Size(59, 17);
+            this.radFemale.TabIndex = 8;
+            this.radFemale.TabStop = true;
+            this.radFemale.Text = "Female";
+            this.radFemale.UseVisualStyleBackColor = true;
+            // 
+            // radMale
+            // 
+            this.radMale.AutoSize = true;
+            this.radMale.Location = new System.Drawing.Point(84, 140);
+            this.radMale.Name = "radMale";
+            this.radMale.Size = new System.Drawing.Size(48, 17);
+            this.radMale.TabIndex = 7;
+            this.radMale.TabStop = true;
+            this.radMale.Text = "Male";
+            this.radMale.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(3, 140);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(42, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Gender";
+            // 
+            // txtForename
+            // 
+            this.txtForename.Location = new System.Drawing.Point(84, 69);
+            this.txtForename.Name = "txtForename";
+            this.txtForename.Size = new System.Drawing.Size(200, 20);
+            this.txtForename.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 111);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(66, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Date of Birth";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(54, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Forename";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(3, 29);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(65, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Customer ID";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(377, 82);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(132, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Chosen customer\'s details:";
             // 
             // button1
             // 
@@ -235,15 +238,14 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnUpdate
+            // lblCusID
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(229, 188);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(202, 41);
-            this.btnUpdate.TabIndex = 7;
-            this.btnUpdate.Text = "UPDATE NOW";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.button2_Click);
+            this.lblCusID.AutoSize = true;
+            this.lblCusID.Location = new System.Drawing.Point(81, 29);
+            this.lblCusID.Name = "lblCusID";
+            this.lblCusID.Size = new System.Drawing.Size(67, 13);
+            this.lblCusID.TabIndex = 12;
+            this.lblCusID.Text = "fixed Cust ID";
             // 
             // UpdateCustomer
             // 
@@ -283,12 +285,12 @@
         private System.Windows.Forms.RadioButton radMale;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtForename;
-        private System.Windows.Forms.TextBox txtCusID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Label lblCusID;
     }
 }
