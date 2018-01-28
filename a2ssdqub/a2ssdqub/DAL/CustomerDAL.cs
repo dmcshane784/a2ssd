@@ -33,6 +33,21 @@ namespace a2ssdqub.DAL
             }
         }
 
+        public static int UpdateCustomer(int cusID, string fname, string dob, string sex)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                // No asterisk
+                dob = string.Format("{0:dd/MM/yyyy}",dob);
+                string sqlQuery = string.Format("UPDATE CUSTOMERS SET Forename='{0}',DoB='{1}',Gender='{2}' WHERE CustID = '{3}';", fname, dob, sex, cusID);
+                SqlCommand updateCommand = new SqlCommand(sqlQuery, connection);
+                int rowsAffected = updateCommand.ExecuteNonQuery();
+                connection.Close();
+                return rowsAffected;
+            }
+        }
+
         public static int DeleteCustomer(int cusID)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))

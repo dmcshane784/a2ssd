@@ -47,6 +47,7 @@
             this.radUnknown = new System.Windows.Forms.RadioButton();
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.panChoose.SuspendLayout();
             this.panForm.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +90,7 @@
             // 
             // panForm
             // 
+            this.panForm.Controls.Add(this.button2);
             this.panForm.Controls.Add(this.dtpDob);
             this.panForm.Controls.Add(this.radUnknown);
             this.panForm.Controls.Add(this.radUndisclosed);
@@ -233,6 +235,16 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(229, 188);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(202, 41);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "UPDATE NOW";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // UpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -277,5 +289,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
