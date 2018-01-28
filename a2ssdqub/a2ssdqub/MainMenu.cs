@@ -35,5 +35,12 @@ namespace a2ssdqub
         {
             Application.Exit();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            UpdateCustomer updateC = new UpdateCustomer();
+            updateC.Show();
+        }
     }
 }

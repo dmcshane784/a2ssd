@@ -19,6 +19,8 @@ namespace a2ssdqub.DAL
             using(SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
+                // Syntax with TRANACTION notation: with option of ROLLBACK instead of COMMIT if it fails
+                // string sqlQuery = string.Format("BEGIN TRANSACTION; INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}'); COMMIT;", fname, dob, sex);
                 string sqlQuery = string.Format("INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}');", fname, dob, sex);
                 SqlCommand insertCommand = new SqlCommand(sqlQuery, connection);
 
@@ -72,6 +74,30 @@ namespace a2ssdqub.DAL
                 connection.Close();
 
                 return customerDetails;
+            }
+        }
+
+        public static string[] GetCustomer(int cid)
+        {
+            string[] soughtData = { "","","" };
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+                SqlCommand getAll = new SqlCommand(string.Format("SELECT CustID, Forename, DoB, Gender FROM CUSTOMERS WHERE CustID = {0}",cid), connection);
+
+                SqlDataReader reader = getAll.ExecuteReader();
+
+                if(reader.Read())
+                {
+                    soughtData[0] = reader[1].ToString();
+                    soughtData[1] = reader.GetDateTime(2).ToString();
+                    soughtData[2] = reader[3].ToString();
+                }
+
+                connection.Close();
+
+                return soughtData;
             }
         }
     }
