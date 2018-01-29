@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
-using System.Data.SqlClient;
+using System.Configuration; // needed for _connectionString
+using System.Data.SqlClient; // needed for SqlConnection
 
 namespace a2ssdqub.DAL
 {
@@ -19,7 +19,7 @@ namespace a2ssdqub.DAL
             using(SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                // Syntax with TRANACTION notation: with option of ROLLBACK instead of COMMIT if it fails
+                // Syntax with TRANSACTION notation: with option of ROLLBACK instead of COMMIT if it fails
                 // string sqlQuery = string.Format("BEGIN TRANSACTION; INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}'); COMMIT;", fname, dob, sex);
                 string sqlQuery = string.Format("INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}');", fname, dob, sex);
                 SqlCommand insertCommand = new SqlCommand(sqlQuery, connection);

@@ -42,5 +42,12 @@ namespace a2ssdqub
             UpdateCustomer updateC = new UpdateCustomer();
             updateC.Show();
         }
+
+        private void btnAddReceipt_Click(object sender, EventArgs e)
+        {
+            Hide();
+            frmAddNewReceipt addRec = new frmAddNewReceipt();
+            addRec.Show();
+        }
     }
 }
