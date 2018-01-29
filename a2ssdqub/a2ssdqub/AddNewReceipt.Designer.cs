@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAddNewReceipt));
             this.label1 = new System.Windows.Forms.Label();
             this.lblRecIDexplained = new System.Windows.Forms.Label();
             this.dtpDateIssue = new System.Windows.Forms.DateTimePicker();
@@ -184,6 +185,7 @@
             this.Controls.Add(this.dtpDateIssue);
             this.Controls.Add(this.lblRecIDexplained);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAddNewReceipt";
             this.Text = "Add A New Receipt";
             this.statusStrip1.ResumeLayout(false);

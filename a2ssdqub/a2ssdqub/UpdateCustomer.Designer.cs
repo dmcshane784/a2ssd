@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateCustomer));
             this.label1 = new System.Windows.Forms.Label();
             this.panChoose = new System.Windows.Forms.Panel();
             this.lisCus = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.panForm = new System.Windows.Forms.Panel();
+            this.button2 = new System.Windows.Forms.Button();
             this.lblCusID = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +50,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.panChoose.SuspendLayout();
             this.panForm.SuspendLayout();
             this.SuspendLayout();
@@ -116,6 +117,16 @@
             this.panForm.Name = "panForm";
             this.panForm.Size = new System.Drawing.Size(441, 243);
             this.panForm.TabIndex = 4;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(313, 199);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 30);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Cancel this update";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // lblCusID
             // 
@@ -249,16 +260,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(313, 199);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 30);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Cancel this update";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
             // UpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +272,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.panChoose);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpdateCustomer";
             this.Text = "Update A Customer\'s Details";
             this.Load += new System.EventHandler(this.UpdateCustomer_Load);
