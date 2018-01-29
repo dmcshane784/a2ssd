@@ -40,10 +40,11 @@ namespace a2ssdqub
 
                 if(newlyMadeID > -1)
                 {
-                    // ! // IDEALLY HERE WE WOULD REVEAL THE NEW CUSTOMER ID
-                    MessageBox.Show(txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID);
-                    lblIdMsg.Text = "Customer ID " + newlyMadeID;
-                    tssText.Text = txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID;
+                    string newsflash = txtForename.Text + " has been successfully added, with Customer ID " + newlyMadeID;
+                    MessageBox.Show(newsflash);
+                    // lblIdMsg.Text = "Customer ID " + newlyMadeID;
+                    tssText.Text = newsflash;
+                    ClearForm();
                 }
                 else
                 {
@@ -73,7 +74,7 @@ namespace a2ssdqub
             radUndisclosed.Checked = false;
             radUnknown.Checked = false;
 
-            tssText.Text = "";
+            // tssText.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)

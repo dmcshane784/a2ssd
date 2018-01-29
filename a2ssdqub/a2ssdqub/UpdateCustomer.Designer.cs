@@ -34,6 +34,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.label2 = new System.Windows.Forms.Label();
             this.panForm = new System.Windows.Forms.Panel();
+            this.lblCusID = new System.Windows.Forms.Label();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.dtpDob = new System.Windows.Forms.DateTimePicker();
             this.radUnknown = new System.Windows.Forms.RadioButton();
@@ -47,7 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.lblCusID = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.panChoose.SuspendLayout();
             this.panForm.SuspendLayout();
             this.SuspendLayout();
@@ -98,6 +99,7 @@
             // 
             // panForm
             // 
+            this.panForm.Controls.Add(this.button2);
             this.panForm.Controls.Add(this.lblCusID);
             this.panForm.Controls.Add(this.btnUpdate);
             this.panForm.Controls.Add(this.dtpDob);
@@ -115,11 +117,20 @@
             this.panForm.Size = new System.Drawing.Size(441, 243);
             this.panForm.TabIndex = 4;
             // 
+            // lblCusID
+            // 
+            this.lblCusID.AutoSize = true;
+            this.lblCusID.Location = new System.Drawing.Point(81, 29);
+            this.lblCusID.Name = "lblCusID";
+            this.lblCusID.Size = new System.Drawing.Size(67, 13);
+            this.lblCusID.TabIndex = 12;
+            this.lblCusID.Text = "fixed Cust ID";
+            // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(229, 188);
+            this.btnUpdate.Location = new System.Drawing.Point(229, 157);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(202, 41);
+            this.btnUpdate.Size = new System.Drawing.Size(202, 30);
             this.btnUpdate.TabIndex = 7;
             this.btnUpdate.Text = "UPDATE NOW";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -238,14 +249,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // lblCusID
+            // button2
             // 
-            this.lblCusID.AutoSize = true;
-            this.lblCusID.Location = new System.Drawing.Point(81, 29);
-            this.lblCusID.Name = "lblCusID";
-            this.lblCusID.Size = new System.Drawing.Size(67, 13);
-            this.lblCusID.TabIndex = 12;
-            this.lblCusID.Text = "fixed Cust ID";
+            this.button2.Location = new System.Drawing.Point(313, 199);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 30);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Cancel this update";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
             // 
             // UpdateCustomer
             // 
@@ -292,5 +304,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.Label lblCusID;
+        private System.Windows.Forms.Button button2;
     }
 }
