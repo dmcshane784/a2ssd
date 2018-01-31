@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using a2ssdqub.Models; // ! //
 
 namespace a2ssdqub
 {
@@ -21,8 +22,9 @@ namespace a2ssdqub
         private void UpdateCustomer_Load(object sender, EventArgs e)
         {
             // These controls work on any other form field that only shows 1 value at a time
-            lisCus.DisplayMember = "Value";
-            lisCus.ValueMember = "Key";
+            // lisCus.DisplayMember = "Value";
+            lisCus.ValueMember = "CusID"; // we'll be using this from the Model
+            lisCus.DisplayMember = ""; // thank you Stack OVerflow
 
             // Kick start the form
             RefreshListBox();
@@ -85,16 +87,29 @@ namespace a2ssdqub
             // figure out which radio is selected NOW
             var genderChosen = panForm.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked);
 
-            int rowsUpdated = 
-            CustomerDAL.UpdateCustomer(int.Parse(lblCusID.Text), txtForename.Text, dtpDob.Text, genderChosen.Text);
+            Customer cusToUpdate = (Customer) lisCus.SelectedItem;
+            cusToUpdate.Fname = txtForename.Text;
+            cusToUpdate.Dob = dtpDob.Value;
+            cusToUpdate.Sex = genderChosen.Text;
+                
+            // Customer cusToUpdate = new Customer(int.Parse(lisCus.SelectedValue.ToString()),"",new DateTime(),"NEEDS TO BE GIVEN A VALUE$$$");
 
-            if(rowsUpdated != 1)
+            int rowsUpdated = CustomerDAL.UpdateCustomer(cusToUpdate);
+
+            /*
+            // Ternary operator version
+
+            var label = rowsUpdated == 1 ? "Yeah that updated :-)" : "Baaaad news";
+            MessageBox.Show(label);
+            */
+
+            if(rowsUpdated == 1)
             {
-                MessageBox.Show("Baaaad news");
+                MessageBox.Show("Yeah that updated :-)"); 
             }
             else
             {
-                MessageBox.Show("Yeah that updated :-)");
+                MessageBox.Show("Baaaad news");
             }
 
             // RESTORED TO INITIAL STATE
@@ -103,7 +118,7 @@ namespace a2ssdqub
 
         private void RefreshListBox()
         {
-            lisCus.DataSource = new BindingSource(CustomerDAL.GetListOfCustomers(), null);
+            lisCus.DataSource = CustomerDAL.GetListOfCustomers();
             btnUpdate.Enabled = false;
             lisCus.Enabled = true;
 

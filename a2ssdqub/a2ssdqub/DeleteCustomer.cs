@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using a2ssdqub.DAL;
+using a2ssdqub.Models; // ! //
 
 namespace a2ssdqub
 {
@@ -43,15 +44,15 @@ namespace a2ssdqub
 
         private void refreshCombo()
         {
-            Dictionary<int,string> comboVals  = CustomerDAL.GetListOfCustomers();
+            List<Customer> comboVals  = CustomerDAL.GetListOfCustomers();
             // null - binds 1 property of the comboVals to the comboBox, but we won't
             // to ensure both the key and value are available
             // instead of replacing it with "Key" or "Value"
             // as a Dictionary always has 1 of each
             comAllCus.DataSource = new BindingSource(comboVals,null);
             // These controls work on any other form field that only shows 1 value at a time
-            comAllCus.DisplayMember = "Value";
-            comAllCus.ValueMember = "Key";
+            //comAllCus.DisplayMember = "ToString"; // MAY BE IMPLICIT NOWADAYS
+            comAllCus.ValueMember = "CusID";
         }
     }
 }

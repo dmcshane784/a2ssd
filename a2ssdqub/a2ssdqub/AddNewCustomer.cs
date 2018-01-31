@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using a2ssdqub.DAL; // >> ADD THIS IN TO 028Educate
+using a2ssdqub.Models; // CustomerDAL.AddNew will now work
 
 namespace a2ssdqub
 {
@@ -36,7 +37,7 @@ namespace a2ssdqub
 
             if (txtForename.Text != "" && datDob.Text != "" && checkedButton.Text != "")
             {
-                int newlyMadeID = CustomerDAL.AddNewCustomer(txtForename.Text, datDob.Text, checkedButton.Text);
+                int newlyMadeID = CustomerDAL.AddNewCustomer(new Customer(txtForename.Text, datDob.Value, checkedButton.Text));
 
                 if(newlyMadeID > -1)
                 {

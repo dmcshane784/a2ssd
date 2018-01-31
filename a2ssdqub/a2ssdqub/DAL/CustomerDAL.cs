@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration; // needed for _connectionString
 using System.Data.SqlClient; // needed for SqlConnection
+using a2ssdqub.Models; // to link to Models folder full of class-representations
 
 namespace a2ssdqub.DAL
 {
@@ -12,7 +13,7 @@ namespace a2ssdqub.DAL
     {
         private static string _connectionString = ConfigurationManager.ConnectionStrings["konekt"].ConnectionString;
 
-        public static int AddNewCustomer(string fname, string dob, string sex)
+        public static int AddNewCustomer(Customer Cus)
         {
             int lastID = -1; // -1 suggests failed INSERT, looks like T for Trouble
 
@@ -21,7 +22,7 @@ namespace a2ssdqub.DAL
                 connection.Open();
                 // Syntax with TRANSACTION notation: with option of ROLLBACK instead of COMMIT if it fails
                 // string sqlQuery = string.Format("BEGIN TRANSACTION; INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}'); COMMIT;", fname, dob, sex);
-                string sqlQuery = string.Format("INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}');", fname, dob, sex);
+                string sqlQuery = string.Format("INSERT INTO CUSTOMERS OUTPUT INSERTED.CustID VALUES('{0}','{1}','{2}');", Cus.Fname, Cus.GetFormattedDate(), Cus.Sex);
                 SqlCommand insertCommand = new SqlCommand(sqlQuery, connection);
 
                 // int newlyMadeID = insertCommand.ExecuteNonQuery();
@@ -33,14 +34,13 @@ namespace a2ssdqub.DAL
             }
         }
 
-        public static int UpdateCustomer(int cusID, string fname, string dob, string sex)
+        public static int UpdateCustomer(Customer Cus)
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
                 // No asterisk
-                dob = string.Format("{0:dd/MM/yyyy}",dob);
-                string sqlQuery = string.Format("UPDATE CUSTOMERS SET Forename='{0}',DoB='{1}',Gender='{2}' WHERE CustID = '{3}';", fname, dob, sex, cusID);
+                string sqlQuery = string.Format("UPDATE CUSTOMERS SET Forename='{0}',DoB='{1}',Gender='{2}' WHERE CustID = '{3}';", Cus.Fname, Cus.GetFormattedDate(), Cus.Sex, Cus.CusID);
                 SqlCommand updateCommand = new SqlCommand(sqlQuery, connection);
                 int rowsAffected = updateCommand.ExecuteNonQuery();
                 connection.Close();
@@ -48,7 +48,7 @@ namespace a2ssdqub.DAL
             }
         }
 
-        public static int DeleteCustomer(int cusID)
+        public static int DeleteCustomer(int cusID) // better name: DeleteCusByID
         {
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -62,28 +62,27 @@ namespace a2ssdqub.DAL
             }
         }
 
-        public static Dictionary<int,string> GetListOfCustomers()
+        public static List<Customer> GetListOfCustomers()
         {
-            Dictionary<int, string> customerDetails = new Dictionary<int, string>();
+            List<Customer> customerDetails = new List<Customer>();
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
+
+                // Constructs the command
                 SqlCommand getAll = new SqlCommand("SELECT * FROM CUSTOMERS ORDER BY CUSTOMERS.CustID ASC", connection);
 
+                // Executes the early stages of doing the command by figuring out how many results there'll be
+                // Ensures size of result set isn't egregious
                 SqlDataReader reader = getAll.ExecuteReader();
 
                 // iterate through the result set; each iteration is 1 record
                 while(reader.Read())
                 {
-                    // LEFT = Key being extracted directly via IDataReader's .GetInt32() method
-                    // RIGHT = Value to be visible on combo box, formed into a string by implicit cast
-                    // 1st DRAFT:
-                    // customerDetails.Add(reader.GetInt32(0),reader[0] + "," + reader[1]);
-                    // 2nd DRAFT:
-                    // NB Implicit typecasting still in use
-                    string dictionaryEntry = string.Format("{0}, {1}, {2:dd/MM/yyyy}, {3}", reader[0], reader[1], reader.GetDateTime(2), reader[3]);
-                    customerDetails.Add(reader.GetInt32(0),dictionaryEntry);
+                    // This is where the mapping between the SQL data type and C# data type is controlled
+                    // It adds further direction to the List and the Model
+                    customerDetails.Add(new Customer(reader.GetInt32(0), reader.GetString(1), reader.GetDateTime(2), reader[3].ToString()));
                 }
 
                 connection.Close();
