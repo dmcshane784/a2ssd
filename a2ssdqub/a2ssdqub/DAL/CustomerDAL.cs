@@ -36,14 +36,20 @@ namespace a2ssdqub.DAL
 
         public static int UpdateCustomer(Customer Cus)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (var connection = new SqlConnection(_connectionString))
             {
                 connection.Open();
-                // No asterisk
-                string sqlQuery = string.Format("UPDATE CUSTOMERS SET Forename='{0}',DoB='{1}',Gender='{2}' WHERE CustID = '{3}';", Cus.Fname, Cus.GetFormattedDate(), Cus.Sex, Cus.CusID);
-                SqlCommand updateCommand = new SqlCommand(sqlQuery, connection);
-                int rowsAffected = updateCommand.ExecuteNonQuery();
+              
+                var query = string.Format(@"UPDATE CUSTOMERS 
+                    SET Forename = '{0}', DoB = '{1}', Gender = '{2}' 
+                    WHERE CustID = '{3}';", 
+                    Cus.Fname, Cus.Dob, Cus.Sex, 
+                    Cus.CusID);
+            
+                int rowsAffected = (new SqlCommand(query, connection)).ExecuteNonQuery();
+
                 connection.Close();
+
                 return rowsAffected;
             }
         }
